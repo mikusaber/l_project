@@ -1,0 +1,1 @@
+import{s as e}from"./request.869d566e.js";let n="/api/Shuzi/Main.ashx";function o(t){return e({url:n,method:"get",loadingMsg:"\u6B63\u5728\u52A0\u8F7D...",params:t})}function i(t){return e({url:n,method:"get",customLoading:!0,params:t})}function a(t){return e({url:n,method:"get",params:t})}function s(t){return e({url:n,method:"get",params:t})}export{s as G,o as a,i as b,a as c};
