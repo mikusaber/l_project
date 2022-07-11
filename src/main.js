@@ -32,7 +32,11 @@ import {
   Skeleton,
   Col,
   Row,
+<<<<<<< HEAD
   Lazyload,
+=======
+  Lazyload,
+>>>>>>> 6d0a9b3a73896e6b0ffbd69ffd4461aa4b60e59b
   Overlay
 } from "vant";
 import "./base.css";
@@ -70,7 +74,11 @@ app.use(Popup);
 app.use(Picker);
 app.use(Image);
 app.use(Loading);
+<<<<<<< HEAD
 app.use(Lazyload);
+=======
+app.use(Lazyload);
+>>>>>>> 6d0a9b3a73896e6b0ffbd69ffd4461aa4b60e59b
 app.use(Overlay);
 
 app.use(Lazyload, {
