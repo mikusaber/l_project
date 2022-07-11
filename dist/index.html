@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>Number Collection</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <!-- <script src="//g.alicdn.com/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+  <script src="//g.alicdn.com/sd/smartCaptcha/0.0.4/index.js"></script>
+  <script src="//g.alicdn.com/sd/quizCaptcha/0.0.1/index.js"></script> -->
+  <script src="https://g.alicdn.com/AWSC/AWSC/awsc.js"></script>
+  <script type="module" crossorigin src="/assets/index.6c7d59ac.js"></script>
+  <link rel="stylesheet" href="/assets/index.63c583ad.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  
+  <script src="./node_modules/amfe-flexible/index.js"></script>
+</body>
+<script>
+
+
+  function yourRegisterRequest(url, params) {
+      $.ajax({
+          url: url,
+          type: 'post',  timeout: 10000,
+          //data: {
+          //    action: "UserLogin", paymentType: $('#selectPaymentType').val(), Amount: $(".form-input").val()
+          //},
+          data: params,
+          success: function (json) {
+              alert(json.result.code);
+                     if(json.result.code == 400) {
+              //唤醒滑动验证
+              getNC().then(function(){
+                  NoCaptcha.upLang('cn', {
+                      'LOADING':"加载中...",//加载
+                      'SLIDER_LABEL': "请向右滑动验证",//等待滑动
+                      'CHECK_Y':"验证通过",//通过
+                      'ERROR_TITLE':"非常抱歉，这出错了...",//拦截
+                      'CHECK_N':"验证未通过", //准备唤醒二次验证
+                      'OVERLAY_INFORM':"经检测你当前操作环境存在风险，请输入验证码",//二次验证
+                      'TIPS_TITLE':"验证码错误，请重新输入"//验证码输错时的提示
+                  });
+                      _nvc_nc.reset();
+                  })
+              } else if (json.result.code == 600) {
+                  //唤醒刮刮卡
+                  getSC().then(function(){})
+              } else if (json.result.code == 700) {
+                  //唤醒问答验证码
+                  getLC()
+              } else if (json.result.code == 100 || json.result.code == 200) {
+                  //注册成功
+                  nvcReset()
+                  alert("register success!")
+              } else if (json.result.code == 800 || json.result.code == 900) {
+                  //直接拦截
+                  nvcReset()
+                  alert("register failed!")
+              }
+          }
+      });
+  }
+
+</script>
+
+</html>
