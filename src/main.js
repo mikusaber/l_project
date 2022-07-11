@@ -33,6 +33,7 @@ import {
   Col,
   Row,
   Lazyload,
+  Overlay
 } from "vant";
 import "./base.css";
 import "./tab.scss";
@@ -70,6 +71,7 @@ app.use(Picker);
 app.use(Image);
 app.use(Loading);
 app.use(Lazyload);
+app.use(Overlay);
 
 app.use(Lazyload, {
   lazyComponent: true,
